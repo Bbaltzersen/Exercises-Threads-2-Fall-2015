@@ -44,10 +44,39 @@ public class test {
         Thread t3 = new sumPic("thread3", "https://fronter.com/volY12-cache/cache/img/design_images/Classic/other_images/button_bg.png"); 
         t3.start();
         int s3 = test.getSum();
+    }
+    
+    @Test
+    public void hardwareTest() {
+        System.out.println("Avilable Processors: " + Runtime.getRuntime().availableProcessors());
+    }
+    
+    @Test
+    public void timeTest1() {
+        Thread t1 = new sumPic("thread1", "https://fronter.com/cphbusiness/design_images/images.php/Classic/login/fronter_big-logo.png");
+        Thread t2 = new sumPic("thread2", "https://fronter.com/cphbusiness/design_images/images.php/Classic/login/folder-image-transp.png");
+        Thread t3 = new sumPic("thread3", "https://fronter.com/volY12-cache/cache/img/design_images/Classic/other_images/button_bg.png"); 
         
+        long start = System.nanoTime();
+        t1.run();
+        t2.run();
+        t3.run();
+        long end = System.nanoTime();
+        System.out.println("Time Sequental: "+(end-start));
+    }
+    
+    @Test
+    public void timeTestPara() {
+        Thread t1 = new sumPic("thread1", "https://fronter.com/cphbusiness/design_images/images.php/Classic/login/fronter_big-logo.png");
+        Thread t2 = new sumPic("thread2", "https://fronter.com/cphbusiness/design_images/images.php/Classic/login/folder-image-transp.png");
+        Thread t3 = new sumPic("thread3", "https://fronter.com/volY12-cache/cache/img/design_images/Classic/other_images/button_bg.png"); 
         
-        
-        
+        long start = System.nanoTime();
+        t1.start();
+        t2.start();
+        t3.start();
+        long end = System.nanoTime();
+        System.out.println("Time Sequental: "+(end-start));
     }
     
 }
